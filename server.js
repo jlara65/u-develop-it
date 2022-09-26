@@ -1,6 +1,9 @@
 const express = require('express');
 const mysql = require('mysql2');
 const inputCheck = require('./utils/inputCheck');
+require('dotenv').config();
+let db_user = process.env.DB_USER;
+let db_pw = process.env.DB_PASSWORD;
 
 const PORT = process.env.PORT || 3001;
 const app = express();
@@ -13,8 +16,8 @@ app.use(express.json());
 const db = mysql.createConnection(
     {
         host: 'localhost',
-        user: 'root',
-        password: 'Holsbhb65*',
+        user: db_user,
+        password: db_pw,
         database: 'election'
     },
     console.log('Connected to the election database.')
